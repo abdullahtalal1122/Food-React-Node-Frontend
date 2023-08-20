@@ -7,7 +7,7 @@ function handlelogin(email, password) {
       };
 
       const response = await fetch(
-        "http://localhost:8000/api/v1/vendor/login",
+        "http://localhost:5050/api/v1/vendor/login",
         {
           method: "POST",
           headers: {
@@ -31,4 +31,31 @@ function handlelogin(email, password) {
   };
 }
 
-export { handlelogin };
+function handlegoogleLogin(authorizationCode) {
+  return async function (dispatch) {
+    try {
+      const response = await fetch(
+        "http://localhost:5050/api/v1/vendor/oauth/google",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ authorizationCode }),
+        }
+      );
+
+      const data = await response.json();
+      localStorage.setItem("token", data.Token);
+      if (response.ok) {
+        dispatch({ type: "account/loginsucess", payload: data });
+      } else {
+        dispatch({ type: "account/loginfailure" });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+
+export { handlelogin, handlegoogleLogin };

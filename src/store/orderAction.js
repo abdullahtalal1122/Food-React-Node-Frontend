@@ -1,6 +1,6 @@
 const fetchOrder = () => {
   return async function (dispatch) {
-    const response = await fetch("http://localhost:8000/api/v1/order", {
+    const response = await fetch("http://localhost:5050/api/v1/order", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
