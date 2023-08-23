@@ -1,16 +1,16 @@
+import React from "react";
+
+import Footer from "./footer";
 import Header from "./header";
 import Body from "./orderBody/body";
-import Footer from "./footer";
-import { OrderBody } from "../../styles/ordersstyle";
-
-const Order = () => {
+const OrdersPage = () => {
   return (
-    <OrderBody>
+    <div>
       <Header />
       <Body />
       <Footer />
-    </OrderBody>
+    </div>
   );
 };
 
-export default Order;
+export default OrdersPage;

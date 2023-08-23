@@ -16,6 +16,9 @@ body {
 /* button {
   font-family: "Montserrat", sans-serif;
 } */
+body {
+  background-color: #f0f0f0;
+}
 
 @keyframes spin {
   0% {

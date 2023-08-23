@@ -1,5 +1,7 @@
 import Button from "./button";
 import OrderDetails from "./orderDetails";
+import styles from "./../../../styles/orders.module.css";
+
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
@@ -17,17 +19,23 @@ const Body = () => {
     dispatch(fetchOrder());
   }
 
+  const SelectedFilter = selectedFilter;
+
+  // console.log(SelectedFilter);
+
+  // console.log(extractedString); // Output: "In Progress"
+
   const filteredOrders = orders.order.filter((order) => {
-    if (selectedFilter === "New Orders") {
+    if (SelectedFilter === "New Orders") {
       return order.state === 0;
     }
-    if (selectedFilter === "In Progress") {
+    if (SelectedFilter === "In Progress") {
       return order.state === 1;
     }
-    if (selectedFilter === "Order Ready") {
+    if (SelectedFilter === "Order Ready") {
       return order.state === 2;
     }
-    if (selectedFilter === "In Delivery") {
+    if (SelectedFilter === "In Delivery") {
       return order.state === 3;
     }
   });
@@ -40,25 +48,27 @@ const Body = () => {
   }, []);
 
   return (
-    <div>
-      <div>
-        <Button name="New Orders" clicked={clicked} />
-        <Button name="In Progress" clicked={clicked} />
-        <Button name="Order Ready" clicked={clicked} />
-        <Button name="In Delivery" clicked={clicked} />
+    <div className={styles.container}>
+      <div className={styles.main}>
+        <div className={styles.ordersButtons}>
+          <Button name="New Orders" clicked={clicked} />
+          <Button name="In Progress" clicked={clicked} />
+          <Button name="Order Ready" clicked={clicked} />
+          <Button name="In Delivery" clicked={clicked} />
+        </div>
+        {filteredOrders.length > 0 ? (
+          filteredOrders.map((o) => (
+            <OrderDetails
+              key={o._id}
+              id={o._id}
+              items={o.orderitems}
+              time={o.updatedAt}
+            />
+          ))
+        ) : (
+          <p>No orders to display.</p>
+        )}
       </div>
-      {filteredOrders.length > 0 ? (
-        filteredOrders.map((o) => (
-          <OrderDetails
-            key={o._id}
-            id={o._id}
-            items={o.orderitems}
-            time={o.updatedAt}
-          />
-        ))
-      ) : (
-        <p>No orders to display.</p>
-      )}
     </div>
   );
 };
