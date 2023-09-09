@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/481.9d6ac8fd.chunk.js","mappings":"6HAIA,UAJa,WACX,OAAOA,EAAAA,EAAAA,KAAA,MAAAC,SAAI,sBACb,C","sources":["pages/Menu.js"],"sourcesContent":["const Menu = () => {\r\n  return <h1>Under Construction</h1>;\r\n};\r\n\r\nexport default Menu;\r\n"],"names":["_jsx","children"],"sourceRoot":""}

@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkfrontend=self.webpackChunkfrontend||[]).push([[481],{2481:function(n,e,r){r.r(e);var t=r(184);e.default=function(){return(0,t.jsx)("h1",{children:"Under Construction"})}}}]);
+//# sourceMappingURL=481.9d6ac8fd.chunk.js.map

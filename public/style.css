@@ -16,8 +16,12 @@ body {
 /* button {
   font-family: "Montserrat", sans-serif;
 } */
+* {
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
 body {
-  background-color: #f0f0f0;
+  background-color: #fafafa;
 }
 
 @keyframes spin {
@@ -28,6 +32,7 @@ body {
     transform: rotate(360deg);
   }
 }
+
 /*
 
  // THIS IS THE STYLES THAT IMPLIMENTED ON LOGIN COMPONENT

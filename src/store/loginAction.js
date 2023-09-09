@@ -18,11 +18,11 @@ function handlelogin(email, password) {
       );
 
       const data = await response.json();
-
       localStorage.setItem("token", data.Token);
-      if (response.ok) {
+
+      if (data.status === "sucess") {
         dispatch({ type: "account/loginsucess", payload: data });
-      } else {
+      } else if (data.status === "fail") {
         dispatch({ type: "account/loginfailure" });
       }
     } catch (error) {

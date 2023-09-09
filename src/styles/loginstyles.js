@@ -72,6 +72,7 @@ const StyledButton = styled.button`
   border-radius: 40px;
   margin-left: 30px;
   margin-top: 30px;
+  margin-bottom: 10px;
   background-color: #00c2ff;
   border: none;
   color: #fff;

@@ -2,7 +2,7 @@ import Button from "./button";
 import OrderDetails from "./orderDetails";
 import styles from "./../../../styles/orders.module.css";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { fetchOrder, setFilter } from "../../../store/orderAction";
@@ -10,20 +10,25 @@ import { fetchOrder, setFilter } from "../../../store/orderAction";
 const Body = () => {
   const dispatch = useDispatch();
   const orders = useSelector((store) => store.order);
+  const [status, setStatus] = useState(0);
 
   // const selectedFilter = useSelector((store) => store.selectedFilter);
   const selectedFilter = useSelector((store) => store.order.selectedFilter);
 
   function clicked(value) {
+    let obj = {
+      "New Orders": 0,
+      "In Progress": 1,
+      "Order Ready": 2,
+      "In Delivery": 3,
+    };
+
+    setStatus(obj[value]);
     dispatch(setFilter(value));
     dispatch(fetchOrder());
   }
 
   const SelectedFilter = selectedFilter;
-
-  // console.log(SelectedFilter);
-
-  // console.log(extractedString); // Output: "In Progress"
 
   const filteredOrders = orders.order.filter((order) => {
     if (SelectedFilter === "New Orders") {
@@ -51,10 +56,10 @@ const Body = () => {
     <div className={styles.container}>
       <div className={styles.main}>
         <div className={styles.ordersButtons}>
-          <Button name="New Orders" clicked={clicked} />
-          <Button name="In Progress" clicked={clicked} />
-          <Button name="Order Ready" clicked={clicked} />
-          <Button name="In Delivery" clicked={clicked} />
+          <Button name="New Orders" clicked={clicked} state={status === 0} />
+          <Button name="In Progress" clicked={clicked} state={status === 1} />
+          <Button name="Order Ready" clicked={clicked} state={status === 2} />
+          <Button name="In Delivery" clicked={clicked} state={status === 3} />
         </div>
         {filteredOrders.length > 0 ? (
           filteredOrders.map((o) => (

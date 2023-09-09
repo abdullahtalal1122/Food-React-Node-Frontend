@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkfrontend=self.webpackChunkfrontend||[]).push([[460],{1460:function(n,e,t){t.r(e);var o=t(7689),r=t(184);e.default=function(){var n=(0,o.s0)();return(0,r.jsxs)("div",{children:[(0,r.jsx)("h1",{children:"Under Construction"}),(0,r.jsx)("button",{onClick:function(){localStorage.removeItem("token"),n("/")},children:"Logout"})]})}}}]);
+//# sourceMappingURL=460.c2c91301.chunk.js.map

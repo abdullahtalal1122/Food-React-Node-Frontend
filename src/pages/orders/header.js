@@ -1,5 +1,11 @@
 import styles from "./../../styles/orders.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+import {
+  faBell,
+  faSquare,
+  faMagnifyingGlass,
+} from "@fortawesome/free-solid-svg-icons";
 const Header = () => {
   return (
     <header className={styles.topHeaders}>
@@ -19,24 +25,28 @@ const Header = () => {
         </div>
       </div>
       <div className={styles.payout}>
-        <p>Payout</p>
-        <p>0.00 OMR</p>
+        <p className={styles.payoutP}>Payout</p>
+        <p className={styles.payoutP}>0.00 OMR</p>
       </div>
       <div className={styles.belliconDiv}>
         <button>
-          <i>I1</i>
+          <FontAwesomeIcon icon={faBell} className="fa-2x" />
         </button>
         <button>
-          <i>I2</i>
+          <FontAwesomeIcon icon={faSquare} className="fa-2x" />
         </button>
       </div>
       <div className={styles.headerSearchDiv}>
-        <div>
-          <button>En</button>
+        <div className={styles.headerSearchButtonDiv}>
+          <button className={styles.headerSearchButton}>EN</button>
         </div>
-        <div>
-          <input type="search" placeholder="Search" />
-          <i></i>
+        <div className={styles.headerSearchInputDiv}>
+          <FontAwesomeIcon icon={faMagnifyingGlass} className={styles.search} />
+          <input
+            className={styles.headerSearchInput}
+            type="search"
+            placeholder="Search"
+          />
         </div>
       </div>
     </header>

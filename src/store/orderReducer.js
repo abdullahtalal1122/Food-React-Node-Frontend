@@ -6,7 +6,6 @@ const initialValue = {
 const orderReducer = (state = initialValue, action) => {
   switch (action.type) {
     case "order/setorder":
-      console.log(action);
       return { ...state, order: action.payload };
     case "order/setfilter":
       return { ...state, selectedFilter: action.payload };

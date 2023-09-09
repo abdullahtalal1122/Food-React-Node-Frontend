@@ -1,17 +1,19 @@
 import styles from "./../../../styles/orders.module.css";
 
-const Button = (props) => {
+const Button = ({ name = "", state, clicked }) => {
   return (
     <div className={styles.buttonProgressHolder}>
       <button
-        className={styles.ordersButtonsAB}
+        className={`${styles.ordersButtonsAB} ${
+          state && styles.ordersButtonsActive
+        }`}
         onClick={(e) => {
-          props.clicked(e.target.innerHTML);
+          clicked(e.target.innerHTML);
         }}
       >
-        {props.name}
+        {name}
       </button>
-      <span className={styles.buttonsProgress}>6</span>
+      <span className={styles.buttonsProgress}>4</span>
     </div>
   );
 };
